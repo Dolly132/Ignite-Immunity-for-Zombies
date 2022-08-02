@@ -21,9 +21,9 @@ ConVar g_cvMaxUses;
 
 public Plugin myinfo = 
 {
-	name = "Ignite",
+	name = "IgniteImmunity",
 	author = "Dolly",
-	description = "Ignite Test",
+	description = "Gives Zombies Ignite Immunity",
 	version = "1.0",
 	url = "https://nide.gg"
 };
