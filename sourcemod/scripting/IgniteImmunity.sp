@@ -59,6 +59,9 @@ public void OnClientDisconnect(int client)
 
 public Action OnPlayerRunCmd(int client, int &buttons, int &impluse)
 {
+	if(!IsClientInGame(client))
+		return Plugin_Continue;
+		
 	if(g_fEndTime[client] != 0.0 && GetGameTime() >= g_fEndTime[client])
 	{
 		SetEntPropFloat(client, Prop_Send, "m_flProgressBarStartTime", 0.0);
@@ -88,7 +91,7 @@ public Action OnPlayerRunCmd(int client, int &buttons, int &impluse)
 		}
 	}
 	
-	if(IsClientInGame(client) && IsPlayerAlive(client) && GetClientTeam(client) == 2 && !g_bIsClientProtected[client])
+	if(IsPlayerAlive(client) && GetClientTeam(client) == 2 && !g_bIsClientProtected[client])
 	{
 		if(buttons & IN_RELOAD)
 		{
