@@ -100,6 +100,9 @@ public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &dam
 	if(!g_bIsClientProtected[victim])
 		return Plugin_Continue;
 	
+	if(!IsClientInGame(victim) || !IsClientInGame(attacker))
+		return Plugin_Continue;
+		
 	RequestFrame(DeleteIgnite, GetClientUserId(victim));
 	
 	return Plugin_Continue;
