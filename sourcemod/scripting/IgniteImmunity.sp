@@ -111,7 +111,7 @@ public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &dam
 void DeleteIgnite(int userid)
 {
 	int victim = GetClientOfUserId(userid);
-	if(!IsClientInGame(victim))
+	if(victim < 1 || !IsClientInGame(victim))
 		return;
 	
 	int flags = GetEntityFlags(victim);
@@ -160,6 +160,9 @@ public Action TimerHandler_Immunity(Handle timer, int userid)
 {
 	int client = GetClientOfUserId(userid);
 	
+	if(client < 1)
+		return Plugin_Stop;
+		
 	if(!IsClientInGame(client))
 	{
 		g_hClientTimer[client] = null;
